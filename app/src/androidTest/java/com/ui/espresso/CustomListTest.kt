@@ -43,6 +43,8 @@ class CustomListTest : TestBase() {
     @Test
     fun testOpenBookByTitleAndAuthor() {
 
+        Espresso.onView(ViewMatchers.withId(R.id.custom_list_adapter_button)).perform(ViewActions.click())
+
         // Match a book with a specific title and author name
         Espresso.onData(CoreMatchers.allOf(CustomMatchers.withBookTitle(BOOK_TITLE), CustomMatchers.withBookAuthor(BOOK_AUTHOR))).perform(ViewActions.click())
 
@@ -55,6 +57,8 @@ class CustomListTest : TestBase() {
 
     @Test
     fun testClickOnBookByPosition() {
+        Espresso.onView(ViewMatchers.withId(R.id.custom_list_adapter_button)).perform(ViewActions.click())
+
         Espresso.onData(CoreMatchers.anything()).atPosition(5).perform(ViewActions.click())
         Espresso.onView(ViewMatchers.withId(R.id.book_title)).check(ViewAssertions.matches(ViewMatchers.withText(BOOK_TITLE)))
         Espresso.onView(ViewMatchers.withId(R.id.book_author)).check(ViewAssertions.matches(ViewMatchers.withText(BOOK_AUTHOR)))
